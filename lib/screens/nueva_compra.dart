@@ -40,7 +40,7 @@ class _NuevaCompraState extends State<NuevaCompra> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("NUEVA COMPRA")),
+      appBar: AppBar(title: const Text("Nueva Compra")),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
