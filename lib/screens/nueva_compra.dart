@@ -36,33 +36,27 @@ class _NuevaCompraState extends State<NuevaCompra> {
     });
   }
 
+  //AQUI ES DONDE SE DIBUJA LOS ELEMENTOS DE LA PANTALLA
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Nueva Compra")),
-
       body: Padding(
         padding: const EdgeInsets.all(16),
-
         child: SingleChildScrollView(
           child: Column(
             children: [
               TextField(
                 controller: descripcionCompra,
-
                 decoration: const InputDecoration(
                   labelText: "Descripción de la compra",
                 ),
               ),
-
               const SizedBox(height: 15),
-
               // Selector de vendedor
               DropdownButtonFormField<String>(
                 value: vendedorSeleccionado,
-
                 decoration: const InputDecoration(labelText: "Vendedor"),
-
                 items: const [
                   DropdownMenuItem(
                     value: "CAMIONETA ROJA",
@@ -83,29 +77,22 @@ class _NuevaCompraState extends State<NuevaCompra> {
               ),
 
               const SizedBox(height: 15),
-
               TextField(
                 controller: costo,
-
                 keyboardType: TextInputType.number,
-
                 decoration: const InputDecoration(labelText: "Costo"),
               ),
 
               const SizedBox(height: 15),
-
               // Estado del pago
               DropdownButtonFormField<String>(
                 value: estadoPago,
-
                 decoration: const InputDecoration(labelText: "Estado de pago"),
-
                 items: const [
                   DropdownMenuItem(
                     value: "PENDIENTE",
                     child: Text("PENDIENTE"),
                   ),
-
                   DropdownMenuItem(value: "PAGADO", child: Text("PAGADO")),
                 ],
 
@@ -121,10 +108,8 @@ class _NuevaCompraState extends State<NuevaCompra> {
               SizedBox(
                 width: double.infinity,
                 height: 50,
-
                 child: ElevatedButton(
                   onPressed: guardarCompra,
-
                   child: const Text(
                     "Guardar Compra",
                     style: TextStyle(fontSize: 18),

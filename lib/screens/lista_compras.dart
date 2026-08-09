@@ -36,9 +36,7 @@ class _ListaComprasState extends State<ListaCompras> {
   List<Map<String, dynamic>> compras = [];
 
   String filtroEstado = "TODOS";
-
   String vendedorSeleccionado = "TODOS";
-
   @override
   void initState() {
     super.initState();
@@ -48,16 +46,13 @@ class _ListaComprasState extends State<ListaCompras> {
   Future cargarCompras() async {
     List<Map<String, dynamic>> resultado =
         await DatabaseHelper.instance.obtenerCompras();
-
     if (filtroEstado == "PENDIENTES") {
       resultado =
           resultado.where((c) => c['estado_pago'] == "PENDIENTE").toList();
     }
-
     if (filtroEstado == "PAGADOS") {
       resultado = resultado.where((c) => c['estado_pago'] == "PAGADO").toList();
     }
-
     if (vendedorSeleccionado != "TODOS") {
       resultado =
           resultado
@@ -71,28 +66,6 @@ class _ListaComprasState extends State<ListaCompras> {
   }
 
   // Cambiar PENDIENTE / PAGADO
-
-  /*Future cambiarEstadoPago(Map<String, dynamic> compra) async {
-    String nuevoEstado;
-
-    if (compra['estado_pago'] == "PENDIENTE") {
-      nuevoEstado = "PAGADO";
-    } else {
-      nuevoEstado = "PENDIENTE";
-    }
-
-    await DatabaseHelper.instance.actualizarEstadoPago(
-      compra['id_compra'],
-      nuevoEstado,
-    );
-
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text("Estado cambiado a $nuevoEstado")));
-
-    cargarCompras();
-  }*/
-
   Future cambiarEstadoPago(Map<String, dynamic> compra) async {
     if (compra['estado_pago'] == "PAGADO") {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -132,15 +105,14 @@ class _ListaComprasState extends State<ListaCompras> {
         compra['id_compra'],
         "PAGADO",
       );
-
       await cargarCompras();
-
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Compra actualizada a PAGADO")),
       );
     }
   }
 
+  //AQUI ES DONDE SE DIBUJA LOS ELEMENTOS DE LA PANTALLA
   @override
   Widget build(BuildContext context) {
     return Scaffold(

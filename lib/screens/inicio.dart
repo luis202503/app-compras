@@ -6,6 +6,7 @@ import 'package:compras/screens/reporte.dart';
 class Inicio extends StatelessWidget {
   const Inicio({super.key});
 
+  //AQUI ES DONDE SE DIBUJA LOS ELEMENTOS DE LA PANTALLA
   @override
   Widget build(BuildContext context) {
     return Scaffold(
